@@ -1,59 +1,43 @@
-# SpringMVCProject1总结
+# SpringMVCProject2总结
 
-## SpringMVC测试工程1：
+## SpringMVC测试工程2：
 
-### 1.了解SpringMVC是什么（SpringMVC简介）：
+### 项目环境：
 
-#### SpringMVC概述：
+	IDE工具：IDEA、JDK1.8+Tomcat8.5.33、SpringMVC框架版本：spring-webmvc-5.0.7.RELEASE
+	所需jar包：存放在\web\WEB-INF\lib目录下
 
-	Spring MVC属于SpringFrameWork的后续产品，
+### 总结：
+#### 一.SpringMVC的请求转发与重定向
 
-	Spring 框架提供了构建 Web 应用程序的全功能 MVC 模块。
+				1. 请求转发与重定向的区别：
+				
+					1、转发是在服务器端完成的，重定向是在客户端发生的；
+					2、转发的速度快，重定向速度慢；
+					3、转发是同一次请求，重定向是两次请求；
+					4、转发地址栏没有变化，重定向地址栏有变化；
+					5、转发必须是在同一台服务器下完成，重定向可以在不同的服务器下完成。
+				
+				2.学习使用SpringMVC的请求转发与重定向  
 
-	使用 Spring 可插入的 MVC 架构，从而在使用Spring进行WEB开发时，
-可以选择使用	Spring的SpringMVC框架或集成其他MVC开发框架。
+#### 二.接收参数  
 
-	Spring web mvc和Struts2都属于表现层的框架。
-
-### 2.简单了解SpringMVC处理流程：
-
-	用户发送请求至前端控制器DispatcherServlet
-
-	DispatcherServlet收到请求调用HandlerMapping处理器映射器。
-
-	处理器映射器根据请求url找到具体的处理器，生成处理器对象及处理器拦截器(如果有则	生成)一并返回给DispatcherServlet。
-
-	DispatcherServlet通过HandlerAdapter处理器适配器调用处理器。
-
-	执行处理器(Controller，也叫后端控制器)。
-
-	Controller执行完成返回ModelAndView。
-
-	HandlerAdapter将controller执行结果ModelAndView返回给DispatcherServlet。
-
-	DispatcherServlet将ModelAndView传给ViewReslover视图解析器。
-
-	ViewReslover解析后返回具体View。
-
-	DispatcherServlet对View进行渲染视图（即将模型数据填充至视图中）。
-
-	DispatcherServlet响应用户。
-
-
-### 3.该工程项目为入门程序，操作步骤总结如下：
-	
-	1.创建web工程
-
-	2.导入springMVC相关jar包,在spring的基础上添加一个mvc的包
-
-	3.添加配置文件：springmvc.xml
-
-	4.配置前端控制器
-
-	5.创建控制器 
-
-	6.在springMVC核心配置文件当中添加控制器扫描范围
-
-	7.创建first.jsp
-
-	8.index.jsp页面跳转
+				1.使用传统request对象接收参数：
+					Springmvc框架会自动把Request对象传递给方法。
+					
+				2.不使用request接收简单类型参数：
+					当请求的参数名称和处理器形参名称一致时会将请求参数与形参进行绑定。
+					@RequestParam：形参的类型与绑定的类型不一致时,可以使用@RequestParam进行匹配
+						value：请求参数名字
+						required：是否必须，默认是true，表示请求中一定要有相应的参数，否则将报错
+						defaultValue：默认值，表示如果请求中没有同名参数时的默认值
+						
+				3.以一个JavaBean对象接收：
+					要求对象当中的属性要和表单当中的名称一致
+					
+				4.数组接收数据：
+					name相同时,中以使用数组来接收对应的参数
+					
+				5.包装类接收参数
+				
+					
