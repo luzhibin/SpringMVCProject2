@@ -12,7 +12,7 @@
 </head>
 <body>
     <h1>second.jsp</h1><br>
-    <h1>ID:${id}</h1><br>
-    <h1>NAME:${name}</h1>
+    <h3>第一种方式:使用传统的request对象来接收参数 ID:${id}</h3><br>
+    <h3>第一种方式:使用传统的request对象来接收参数 NAME:${name}</h3>
 </body>
 </html>
