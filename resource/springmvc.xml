@@ -18,4 +18,15 @@
 
     <!--注解扫描-->
     <context:component-scan base-package="web.controller"/>
+
+    <bean id="DateConverter" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean class="web.convert.DateConvert">
+                </bean>
+            </list>
+        </property>
+    </bean>
+    <!--注解驱动 让SpringMVC支持转换器功能-->
+    <mvc:annotation-driven conversion-service="DateConverter"/>
 </beans>
