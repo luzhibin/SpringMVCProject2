@@ -69,4 +69,24 @@
 					
 				5.SpringMVC-@RequestMapping地址通配符写法(ant风格地址)
 				
-					
+#### 四. @PathVariable 、@RequestHeader、@CookieValue
+
+##### 1.使用@PathVariable接收RestFul风格参数  	
+	
+	* 默认情况下Form表单是不支持PUT请求和DELETE请求的
+	* spring3.0添加了一个过滤器HiddenHttpMethodFilter
+	* 可以将post请求转换为PUT或DELETE请求
+	* 注入事项：
+		* 从tomcat8开始,如果直接返回jsp页面,会报405错误 ** JSPs only permit GET POST or HEAD**
+		* 使用重定向的形式跳转到对应jsp
+		* 或者是直接把对应jsp的 isErrorPage="true"
+
+##### 2.过滤器HiddenHttpMethodFilter源码分析  
+
+##### 3.@RequestHeader  
+
+	* 作用：在方法中接收请求头当中的信息
+	
+##### 4.@CookieValue
+
+	* 作用：用来接收浏览发送过来的cookies值 
